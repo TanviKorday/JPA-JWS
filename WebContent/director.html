@@ -1,0 +1,74 @@
+<a href="api/director">Find All Directors</a>
+<br/>
+<a href="api/director/1">Find Director with ID = 1</a>
+<br/>
+<a href="api/director/2">Find Director with ID = 2</a>
+
+<script src="js/jquery.js"></script>
+
+<script>
+	$(function()
+	{
+		var director =
+		{
+			firstName: "Pedro",
+			lastName: "Jack"
+		};
+//		createDirector(director);
+//		updateDirector(10, director);
+		removeDirector(7);
+	});
+
+	function updateDirector(id, director)
+	{
+		$.ajax(
+		{
+			url: "api/director/"+id,
+			data: JSON.stringify(director),
+			type: "put",
+			dataType: "json",
+			contentType: "application/json",
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.log(response);
+			}
+		});
+	}
+
+	function removeDirector(id)
+	{
+		$.ajax(
+		{
+			url: "api/director/"+id,
+			type: "delete",
+			dataType: "json",
+			contentType: "application/json",
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.log(response);
+			}
+		});
+	}
+
+	function createDirector(director)
+	{
+		$.ajax(
+		{
+			url: "api/director",
+			data: JSON.stringify(director),
+			type: "post",
+			dataType: "json",
+			contentType: "application/json",
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.log(response);
+			}
+		});
+	}
+</script>
